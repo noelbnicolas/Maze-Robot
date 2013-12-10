@@ -95,7 +95,7 @@ void Stop(){
 	TA0CCTL1 |= OUTMOD_5;
 	TA1CCTL0 |= OUTMOD_5;
 	TA1CCTL1 |= OUTMOD_5;
-	_delay_cycles(200000);
+	_delay_cycles(100000);
 }
 
 // Mod 7 is 75% Mod 4 is 37.5 Mod 5 is reset
@@ -107,28 +107,35 @@ void RobotMovement(unsigned char direction)
         		Stop();
         		moveLeftMotorBackward();
         		moveRightMotorForward();
-        		_delay_cycles(200000);
+        		_delay_cycles(100000);
         		break;
 
         	case RIGHT:
         		Stop();
         		moveLeftMotorForward();
         		moveRightMotorBackward();
-        		_delay_cycles(200000);
+        		_delay_cycles(100000);
         		break;
+
+        	case SHARPRIGHT:
+				Stop();
+				moveLeftMotorForward();
+				moveRightMotorBackward();
+				_delay_cycles(500000);
+				break;
 
         	case REVERSE:
         		Stop();
         		moveLeftMotorBackward();
         		moveRightMotorBackward();
-        		_delay_cycles(200000);
+        		_delay_cycles(150000);
         		break;
 
         	case FORWARD:
         		Stop();
         		moveLeftMotorForward();
         		moveRightMotorForward();
-        		_delay_cycles(200000);
+        		_delay_cycles(100000);
         		break;
         }
 }

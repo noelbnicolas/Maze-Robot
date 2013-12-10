@@ -7,7 +7,7 @@
 #include <msp430g2553.h>
 #include "RobotSensing.h"
 
-char direction;
+
 
 // ADC10 interrupt service routine
 #pragma vector=ADC10_VECTOR
@@ -48,3 +48,5 @@ int RightSensorScan(){
 	__bis_SR_register(CPUOFF + GIE);
 	return ADC10MEM;
 }
+
+

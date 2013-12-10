@@ -4,6 +4,9 @@
 /*
  * main.c
  */
+char LEFTWALL;
+char RIGHTWALL;
+char FRONTWALL;
 
 
 int main(void) {
@@ -14,20 +17,22 @@ int main(void) {
     RobotMovement(LEFT);
         for (;;)
       {
-		CenterSensorScan();
-		if (ADC10MEM > 0x200)
 
-			RobotMovement(RIGHT);                      // Set P1.0 LED on
-			RobotMovement(REVERSE);
+
+   		CenterSensorScan();
+   		if (ADC10MEM > 0x2FF)
+   			RobotMovement(SHARPRIGHT);                      // Set P1.0 LED on
+//   			_delay_cycles(500000);
+   	        else if (ADC10MEM < 0x200)
+   	   			RobotMovement(REVERSE);
+
 			LeftSensorScan();
-        if (ADC10MEM > 0x2A0)
+        if (ADC10MEM > 0x2FF)
         	RobotMovement(RIGHT);
-        	RobotMovement(REVERSE);
+			else if (ADC10MEM < 0x200)
+				 RobotMovement(LEFT);
+        		 RobotMovement(REVERSE);
 
-        RightSensorScan();
-         if (ADC10MEM < 0x2A0)
-             RobotMovement(LEFT);
-         	 RobotMovement(REVERSE);
 
 
 
