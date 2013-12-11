@@ -18,21 +18,18 @@ int main(void) {
         for (;;)
       {
 
+       		CenterSensorScan();
+       		if (ADC10MEM > 0x3BB)
+       			RobotMovement(SHARPRIGHT);                      // Set P1.0 LED on
+       	        else if (ADC10MEM < 0x200)
+       	   			RobotMovement(REVERSE);
 
-   		CenterSensorScan();
-   		if (ADC10MEM > 0x2FF)
-   			RobotMovement(SHARPRIGHT);                      // Set P1.0 LED on
-//   			_delay_cycles(500000);
-   	        else if (ADC10MEM < 0x200)
-   	   			RobotMovement(REVERSE);
-
-			LeftSensorScan();
-        if (ADC10MEM > 0x2FF)
-        	RobotMovement(RIGHT);
-			else if (ADC10MEM < 0x200)
-				 RobotMovement(LEFT);
-        		 RobotMovement(REVERSE);
-
+        	LeftSensorScan();
+		if (ADC10MEM > 0x2DD)
+			RobotMovement(RIGHT);
+			else if (ADC10MEM < 0x2CC)
+				RobotMovement(LEFT);
+				RobotMovement(REVERSE);
 
 
 
